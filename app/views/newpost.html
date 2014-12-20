@@ -1,31 +1,42 @@
-<div class="modal-title"><h1>Add New Item</h1></div>
+<div class="modal-title"><h2>ADD NEW ITEM</h2></div>
 <form class="form-horizontal" role="form" ng-controller="PostCtrl" ng-submit="newpost(newItem)">
   <div class="form-group">
     <label for="inputTitle" class="col-sm-2 control-label">Item Title</label>
-    <div class="col-sm-9">
+    <div class="col-sm-7">
       <input type="text" class="form-control" id="inputTitle" placeholder="Item Title" ng-model="newItem.title">
     </div>
   </div>
   <div class="form-group">
     <label for="inputPrice" class="col-sm-2 control-label">Price</label>
-    <div class="col-sm-9">
+    <div class="col-sm-7">
       <input type="number" class="form-control" id="inputPrice" placeholder="Price" ng-model="newItem.price">
     </div>
   </div>
   <div class="form-group">
     <label for="inputDescription" class="col-sm-2 control-label">Description</label>
-    <div class="col-sm-9">
+    <div class="col-sm-7">
       <textarea rows="5" class="form-control" id="inputDescription" placeholder="Description" ng-model="newItem.content" />
     </div>
   </div>
 
   <div class="form-group">
     <label for="inputFile" class="col-sm-2 control-label">Image</label>
-    <div class="col-sm-9">
-      <input type="file" id="inputFile" ng-model="newItem.image">
+    <div class="col-sm-7">
+      <input type="file" id="inputFile" fileread="uploadImages">
     </div>
   </div>
   <br>
+  <!-- <div class="form-group"> -->
+  <!--   <div class="well col-sm-offset-2 col-sm-6 drop-zone" ng-file-drop -->
+  <!--        ng-model="myFiles" ng-file-change="fileDropped($files, $event, $rejectedFiles)" -->
+  <!--        accept="image" dropAvailable="dropSupported"> -->
+  <!--     Drop your images! -->
+  <!--     <\!-- <button type="submit" class="btn btn-default col-sm-2">Post</button> -\-> -->
+  <!--   </div> -->
+  <!--   <span ng-repeat="item in uploader.queue"> -->
+  <!--     <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 }"></div> -->
+  <!--   </span> -->
+  <!-- </div> -->
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <button type="submit" class="btn btn-default col-sm-2">Post</button>
