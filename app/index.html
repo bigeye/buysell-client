@@ -51,6 +51,7 @@
             <div class="clear-both float-left" ng-hide="currentUser"><a href ng-click="openSignin()">Sign in</a></div>
             <div class="clear-both float-left" ng-show="currentUser"><a href ng-click="signout()">Hello, {{ currentUser.username }}.</a></div>
             
+            <div class="clear-both float-left"><a href="#/inbox">Inbox</a></div>
             <div class="clear-both float-left"><a href>Cart</a></div>
             <div class="float-right font-blue">12</div>
             <div class="clear-both float-left"><a href>Wish list</a></div>
@@ -111,6 +112,7 @@
         <script src="scripts/controllers/sidebar.js"></script>
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/controllers/post.js"></script>
+        <script src="scripts/controllers/inbox.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -29,17 +29,22 @@ angular.module('buysellApp')
             //     finished();
             // });
 
-            $http({method: 'POST',
-                   url: 'http://buysell.bigeye.me:9876/api/post/' + post_id + '/image/',
-                   data: {
-                       alert: "test.png",
-                       image: $scope.uploadImages
-                   }})
+            var fd = new FormData();
+            fd.append('alert', 'test.png');
+            fd.append('image', $scope.uploadImages);
+            $http.post('http://buysell.bigeye.me:9876/api/post/' + post_id + '/image/',
+                       fd,
+                       {
+                           transformRequest: angular.identity,
+                           headers: {'Content-Type': undefined}
+                       })
                 .success(function(data, status, headers, config) {
                     console.log('success ' + data);
+                    finished();
                 })
                 .error(function(data, status, headers, config) {
                     console.log('fail ' + data);
+                    myService.alertResponse(data);
                 });
         };
 
