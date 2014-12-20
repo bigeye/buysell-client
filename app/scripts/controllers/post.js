@@ -1,6 +1,7 @@
 angular.module('buysellApp')
     .controller('PostCtrl', function($scope, $http, Session,
-                                     myService, $upload, API_URL) {
+                                     myService, $upload, API_URL,
+                                     $rootScope) {
         $scope.newItem = {
             title: '',
             content: '',
@@ -38,6 +39,9 @@ angular.module('buysellApp')
                 .then(function (res) {
                     console.log(res['data']);
                     $scope.upload(res.data.id, function() {
+                        myService.loadPosts(function(posts) {
+                            $rootScope.posts = posts;
+                        });
                         $scope.closeThisDialog();
                     });
                 }, function(error) {

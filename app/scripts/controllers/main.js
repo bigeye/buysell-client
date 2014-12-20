@@ -8,34 +8,26 @@
  * Controller of the buysellApp
  */
 angular.module('buysellApp')
-    .controller('MainCtrl', function ($scope, ngDialog, myService, $http, API_URL) {
+    .controller('MainCtrl', function ($scope, ngDialog, myService, $http, API_URL, $rootScope) {
         $scope.cardSelected = function($photo) {
             $scope.selectedCard = $photo;
             myService.clickToOpen('views/postdetail.html', $scope, 'postdetail');
         };
+        // $scope.cccc = function() {
+        //     $scope.posts.push(
+        //                 {id: 1, title: 'Awesome photo', content: 'Hello', writer: {name:'Samantha', profile: 'http://api.randomuser.me/portraits/med/women/60.jpg'}, images: [// 'http://lorempixel.com/400/300/sports'
+        //                                                                                                                                                          ], price: 1000});
+        // }
 
-        $http.get(API_URL + '/api/post/list/')
-            .success(function (res) {
-                console.log(res);
-                $scope.photos = res.results;
-                $scope.photos.forEach(function(post, i) {
-                    if (post.images.length == 0)
-                        post.images[0] = 'http://portal.aolcdn.com/p5/forms/4344/2af553bd-0f81-41d1-a061-8858924b83ca.jpg';
-                    else {
-                        post.images.forEach(function(image, i) {
-                            console.log(image);
-                            post.images[i] = API_URL + image.url;
-                        });
-                    }
-                });
-            })
-            .error(function(error) {
-                console.log(error);
-                // myService.alertResponse(error['data']);
-            });
-  })
+        $scope.posts = [
+            {id: 1, title: 'Awesome photo', content: 'Hello', writer: {name:'Samantha', profile: 'http://api.randomuser.me/portraits/med/women/60.jpg'}, images: [// 'http://lorempixel.com/400/300/sports'
+                                                                                                                                                                 ], price: 1000},
+                    ];
+        myService.loadPosts(function(posts) {
+            $rootScope.posts = posts;
+        });
+    })
     .directive('imageloaded', [
-
         function () {
             return {
                 restrict: 'A',

@@ -35,14 +35,14 @@
 
       <div class="row">
         <div class="col-md-2 sidebar-container" ng-controller="SidebarCtrl">
-          <img src="images/logo.png" class="buysell-logo" />
+          <a href="#/"><img src="images/logo.png" class="buysell-logo" /></a>
           <div class="logo-sepr"></div>
 
           <div class="sidebar">
-            <div class="float-left"><a href>SELL</a></div>
-            <div class="float-right"><a href ng-click="newPost()"><img src="images/ic_plus.png" /></a></div>
+            <div class="float-left"><a href="#/">SELL</a></div>
+            <div class="float-right" ng-show="currentUser"><a href ng-click="newPost()"><img src="images/ic_plus.png" /></a></div>
             <div class="clear-both float-left"><a href>BUY</a></div>
-            <div class="float-right"><a href><img src="images/ic_plus.png" /></a></div>
+            <div class="float-right" ng-show="currentUser"><a href><img src="images/ic_plus.png" /></a></div>
 
           </div>
           <div class="clear-both sidebar-sepr"></div>
