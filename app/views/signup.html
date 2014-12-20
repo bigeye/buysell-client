@@ -1,21 +1,40 @@
 <div class="modal-title"><h1>Sign up</h1></div>
-<form class="form-horizontal" role="form" ng-controller="LoginCtrl" ng-submit="signin(credentials)">
+<form class="form-horizontal" role="form" ng-controller="LoginCtrl" ng-submit="signup(signupCredentials)">
   <div class="form-group">
     <label for="inputUsername" class="col-sm-4 control-label">Username</label>
     <div class="col-sm-7">
-      <input type="text" class="form-control" id="inputUsername" placeholder="Username" ng-model="credentials.username">
+      <input type="text" class="form-control" id="inputUsername" placeholder="Username" ng-model="signupCredentials.username">
     </div>
   </div>
   <div class="form-group">
     <label for="inputPassword" class="col-sm-4 control-label">Password</label>
     <div class="col-sm-7">
-      <input type="password" class="form-control" id="inputPassword" placeholder="Password" ng-model="credentials.password">
+      <input type="password" class="form-control" id="inputPassword" placeholder="Password" ng-model="signupCredentials.password">
     </div>
   </div>
   <div class="form-group">
     <label for="inputPasswordConfirm" class="col-sm-4 control-label"></label>
     <div class="col-sm-7">
-      <input type="password" class="form-control" id="inputPasswordConfirm" placeholder="Password Confirm" />
+      <input type="password" class="form-control" id="inputPasswordConfirm" placeholder="Password Confirm" ng-model="signupCredentials.passwordConfirm" />
+    </div>
+  </div>
+  <br />
+  <div class="form-group">
+    <label for="inputEmail" class="col-sm-4 control-label">Email</label>
+    <div class="col-sm-7">
+      <input type="email" class="form-control" id="inputEmail" placeholder="Email" ng-model="signupCredentials.email">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputFirstName" class="col-sm-4 control-label">Name</label>
+    <div class="col-sm-7">
+      <input type="text" class="form-control" id="inputFirstName" placeholder="First name" ng-model="signupCredentials.first_name">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputFirstName" class="col-sm-4 control-label"></label>
+    <div class="col-sm-7">
+      <input type="text" class="form-control" id="inputLastName" placeholder="Last name" ng-model="signupCredentials.last_name">
     </div>
   </div>
   <br>

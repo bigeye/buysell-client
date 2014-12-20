@@ -16,9 +16,23 @@ angular.module('buysellApp')
     .factory('AuthService', function ($http, Session) {
         var authService = {};
         
-        authService.login = function (credentials) {
+        authService.login = function (credentials, $scope) {
+            $http
+                .post('http://buysell.bigeye.me:9876/api/account/auth_token', credentials)
+                .then(function (res) {
+                    $scope.setAuthToken(res.data.token);
+                });
             return $http
-                .post('http://143.248.234.137:9876/api/account/login', credentials)
+                .post('http://buysell.bigeye.me:9876/api/account/login', credentials)
+                .then(function (res) {
+                    Session.create(res.data.id, res.data.id);
+                    return res.data;
+                });
+        };
+
+        authService.signup = function (credentials) {
+            return $http
+                .post('http://buysell.bigeye.me:9876/api/account/user', credentials)
                 .then(function (res) {
                     Session.create(res.data.id, res.data.id);
                     return res.data;
@@ -57,14 +71,39 @@ angular.module('buysellApp')
             username: '',
             password: ''
         };
+
+        $scope.signupCredentials = {
+            username: '',
+            password: '',
+            passwordConfirm: '',
+            email: '',
+            first_name: '',
+            last_name: '',
+        };
+
         $scope.signin = function(credentials) {
-            AuthService.login(credentials).then(function (user) {
+            AuthService.login(credentials, $scope).then(function (user) {
                 $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
                 $scope.setCurrentUser(user);
                 $scope.closeThisDialog();
-            }, function () {
+            }, function (error) {
                 $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
-                alert("Login failed");
+                myService.alertResponse(error["data"]);
+            })
+        }
+
+        $scope.signup = function(credentials) {
+            if (credentials.password != credentials.passwordConfirm) {
+                myService.alertResponse({'password': ['It doesn\'t match with password confirm.']});
+                return;
+            }
+            AuthService.signup(credentials).then(function (user) {
+                $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+                $scope.setCurrentUser(user);
+                $scope.closeThisDialog();
+            }, function (error) {
+                $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
+                myService.alertResponse(error['data']);
             })
         }
     });

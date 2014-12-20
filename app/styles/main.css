@@ -266,6 +266,7 @@ html, body {
     bottom: auto;
 }
 
+.ngdialog.signup,
 .ngdialog.newpost,
 .ngdialog.postdetail {
     padding-top: 5%;

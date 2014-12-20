@@ -19,6 +19,7 @@ angular.module('buysellApp')
 
         $scope.signout = function() {
             $scope.setCurrentUser(null);
+            $scope.setAuthToken('');
             Session.destroy();
         }
     });
