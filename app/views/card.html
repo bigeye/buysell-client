@@ -1,6 +1,6 @@
 <div class="card" ng-click="mother.cardSelected(card)">
   <div class="card-photo-wrapper">
-    <img src="" data-ng-src="{{card.src}}"
+    <img src="" data-ng-src="{{ card.images[0] }}"
          class="card-photo animation-fade"
          data-imageloaded=""
          data-loadedclass="animation-faded" />
@@ -9,7 +9,7 @@
     <img class="float-left" src="/images/ic_btn_call.png">
     <img class="float-left" src="/images/ic_btn_won.png">
     <div class="float-right">
-      {{card.price}} won
+      5999 won
     </div>
   </div>
 </div>

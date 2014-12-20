@@ -328,6 +328,10 @@ html, body {
     padding: 20px 30px;
 }
 
+.post-detail-container .post-detail-desc .description pre{
+    padding: 20px;
+}
+
 .writer-wrap {
     border-radius: 50%;
     border: 2px solid #fff;        

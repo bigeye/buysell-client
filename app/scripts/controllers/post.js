@@ -49,7 +49,7 @@ angular.module('buysellApp')
                     console.log(res['data']);
                     $scope.upload(res.data.id, function() {
                         $scope.closeThisDialog();
-                        });
+                    });
                 }, function(error) {
                     myService.alertResponse(error['data']);
                 });
