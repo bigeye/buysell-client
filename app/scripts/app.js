@@ -18,6 +18,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'akoenig.deckgrid',
+    'ngDialog',
   ])
   .config(function ($routeProvider) {
     $routeProvider

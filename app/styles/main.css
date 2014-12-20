@@ -177,8 +177,9 @@ html, body {
 .content-container {
     background: #303133;
     height: 100%;
-    margin-top: 0px;
-    margin-bottom: 0px;
+    margin: 0px;
+    padding: 0px;
+
 }
 
 .float-left {
@@ -198,9 +199,9 @@ html, body {
 }
 
 .deckgrid {
-    padding: 30px;
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
+    margin-left: 30px;
 }
 
 .deckgrid[deckgrid]::before {
@@ -212,6 +213,7 @@ html, body {
 
 .deckgrid .column {
     float: left;
+    margin-top: 30px;
 }
 
 .deckgrid .column-1-3 {
@@ -262,4 +264,61 @@ html, body {
 .card-content-container div {
     top: auto;
     bottom: auto;
+}
+
+.ngdialog.ngdialog-theme-default {
+    padding-top: 5%;
+    padding-bottom: 0;
+}
+
+.ngdialog.ngdialog-theme-default .ngdialog-content {
+    max-width: 100%;
+    width: 80%;
+    height: 90%;
+    padding: 0;
+    border-radius: 12px;
+}
+
+.post-detail-container {
+    overflow-y: auto;
+    height: 100%;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.post-detail-container .post-detail-img {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.post-detail-container .post-detail-desc {
+    padding: 20px 30px 5px 30px;
+}
+
+.post-detail-container .post-detail-desc .description {
+    padding: 20px 30px;
+}
+
+.writer-wrap {
+    border-radius: 50%;
+    border: 2px solid #fff;        
+    height: 90px;
+    width: 90px;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.writer-wrap img {
+    height: 100%;
+    width: 100%;
+}
+
+.text-center {
+    text-align: center;
 }
