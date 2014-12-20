@@ -266,16 +266,35 @@ html, body {
     bottom: auto;
 }
 
-.ngdialog.ngdialog-theme-default {
+.ngdialog.newpost,
+.ngdialog.postdetail {
     padding-top: 5%;
     padding-bottom: 0;
 }
 
-.ngdialog.ngdialog-theme-default .ngdialog-content {
+.ngdialog.postdetail .ngdialog-content {
     max-width: 100%;
     width: 80%;
     height: 90%;
     padding: 0;
+    border-radius: 12px;
+}
+
+.ngdialog.newpost .ngdialog-content {
+    width: 80%;
+    padding: 0 0 30px 0;
+    border-radius: 12px;
+}
+
+.ngdialog.signin .ngdialog-content {
+    width: 35%;
+    padding: 0 0 30px 0;
+    border-radius: 12px;
+}
+
+.ngdialog.signup .ngdialog-content {
+    width: 35%;
+    padding: 0 0 30px 0;
     border-radius: 12px;
 }
 
@@ -321,4 +340,28 @@ html, body {
 
 .text-center {
     text-align: center;
+}
+
+input[type="file"] {
+    padding-top: 7px;
+}
+
+.modal-title {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    width: 100%;
+    background: rgba(0, 0, 0, .05);
+    font-size: x-large;
+    color: #000;
+    padding: 1px 60px;
+    margin-bottom: 40px;
+}
+
+/* 
+  Allow angular.js to be loaded in body, hiding cloaked elements until 
+  templates compile.  The !important is important given that there may be 
+  other selectors that are more specific or come later and might alter display.  
+ */
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
 }

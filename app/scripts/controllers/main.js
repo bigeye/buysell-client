@@ -8,15 +8,10 @@
  * Controller of the buysellApp
  */
 angular.module('buysellApp')
-    .controller('MainCtrl', ['$scope', 'ngDialog', function ($scope, ngDialog) {
-        $scope.clickToOpen = function () {
-            ngDialog.open({ template: 'views/postdetail.html',
-                            scope: $scope });
-        };
-
+    .controller('MainCtrl', ['$scope', 'ngDialog', 'myService', function ($scope, ngDialog, myService) {
         $scope.cardSelected = function($photo) {
             $scope.selectedCard = $photo;
-            $scope.clickToOpen();
+            myService.clickToOpen('views/postdetail.html', $scope, 'postdetail');
         };
 
         $scope.photos = [
