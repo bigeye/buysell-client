@@ -13,17 +13,17 @@ angular.module('buysellApp')
         notAuthenticated: 'auth-not-authenticated',
         notAuthorized: 'auth-not-authorized'
     })
-    .factory('AuthService', function ($http, Session) {
+    .factory('AuthService', function ($http, Session, API_URL) {
         var authService = {};
         
         authService.login = function (credentials, $scope) {
             $http
-                .post('http://buysell.bigeye.me:9876/api/account/auth_token', credentials)
+                .post(API_URL + '/api/account/auth_token', credentials)
                 .then(function (res) {
                     $scope.setAuthToken(res.data.token);
                 });
             return $http
-                .post('http://buysell.bigeye.me:9876/api/account/login', credentials)
+                .post(API_URL + '/api/account/login', credentials)
                 .then(function (res) {
                     Session.create(res.data.id, res.data.id);
                     return res.data;
@@ -32,7 +32,7 @@ angular.module('buysellApp')
 
         authService.signup = function (credentials) {
             return $http
-                .post('http://buysell.bigeye.me:9876/api/account/user', credentials)
+                .post(API_URL + '/api/account/user', credentials)
                 .then(function (res) {
                     Session.create(res.data.id, res.data.id);
                     return res.data;

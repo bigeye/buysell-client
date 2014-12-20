@@ -21,6 +21,7 @@ angular
     'ngDialog',
     'angularFileUpload',
   ])
+    .constant('API_URL', 'http://buysell.bigeye.me:9876')
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -60,6 +61,8 @@ angular
         $scope.authToken = $cookieStore.get("authToken");
         if (!!$scope.authToken)
             $http.defaults.headers.common['Authorization'] = 'JWT ' + $scope.authToken;
+        else
+            delete $http.defaults.headers.common['Authorization'];
         
         $scope.setCurrentUser = function (user) {
             $scope.currentUser = user;
@@ -71,5 +74,7 @@ angular
             $cookieStore.put("authToken", token);
             if (!!token)
                 $http.defaults.headers.common['Authorization'] = 'JWT ' + token;
+            else
+                delete $http.defaults.headers.common['Authorization'];
         }
     });

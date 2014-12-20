@@ -1,6 +1,6 @@
 angular.module('buysellApp')
-    .controller('InboxCtrl', function($scope, $http, myService) {
-        $http.get('http://buysell.bigeye.me:9876/api/account/transaction')
+    .controller('InboxCtrl', function($scope, $http, myService, API_URL) {
+        $http.get(API_URL + '/api/account/transaction')
             .success(function(res) {
                 console.log(res.data);
             })

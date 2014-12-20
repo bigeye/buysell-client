@@ -8,13 +8,13 @@
  * Controller of the buysellApp
  */
 angular.module('buysellApp')
-    .controller('MainCtrl', function ($scope, ngDialog, myService, $http) {
+    .controller('MainCtrl', function ($scope, ngDialog, myService, $http, API_URL) {
         $scope.cardSelected = function($photo) {
             $scope.selectedCard = $photo;
             myService.clickToOpen('views/postdetail.html', $scope, 'postdetail');
         };
 
-        $http.get('http://buysell.bigeye.me:9876/api/post/list/')
+        $http.get(API_URL + '/api/post/list/')
             .success(function (res) {
                 console.log(res);
                 $scope.photos = res.results;
@@ -24,7 +24,7 @@ angular.module('buysellApp')
                     else {
                         post.images.forEach(function(image, i) {
                             console.log(image);
-                            post.images[i] = 'http://buysell.bigeye.me:9876' + image.url;
+                            post.images[i] = API_URL + image.url;
                         });
                     }
                 });
