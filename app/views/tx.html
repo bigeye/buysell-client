@@ -1,0 +1,188 @@
+<div class="tx-container">
+  <ul id="thread-list" class="list-unstyled">
+    <li class="thread-list-item" >
+
+      <div class="row row-condensed row-space-4">
+        <div class="col-sm-12 col-md-10 col-md-push-1">
+          <div class="panel-quote-flush panel">
+            <div class="panel-body normal-form-fields">
+              <form accept-charset="UTF-8" action="/messaging/qt_reply_v2/70918434" class="message_form clearfix" id="non_special_offer_form" method="post">
+                <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓">
+
+                <input type="hidden" name="inquiry_post_id" value="302230018">
+
+                <input type="hidden" name="template" value="">
+                <textarea class="row-space-2 input-resize-vert" id="message_inquiry" name="message" placeholder="Write a message here." style="overflow: hidden; word-wrap: break-word; width: 100%; resize: none; height: 62px;padding: 10px;"></textarea>
+
+
+                <div class="pull-right">
+
+                  <input type="submit" class="btn btn-primary" value="전송하기">
+                </div>
+
+              </form>
+            </div>
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </li>
+    
+    <li class="thread-list-item" ng-repeat="tx in txs">
+
+      <div ng-if="tx.message_type == 'normal' && tx.sender.username != currentUser.username" class="row row-condensed">
+
+        <div class="col-sm-10 col-md-push-1">
+          <div class="row-space-4">
+            <div class="panel panel-quote panel-quote-flush panel-quote-right">
+              <div class="panel-body">
+
+                <div class="flag-control pull-right">
+                  
+                  <a href="#" id="flag-for-message-302231050" class="flag-trigger link-reset" data-behavior="tooltip" aria-label="이 메시지 신고하기">
+                    <i class="icon icon-flag h4"></i>
+                  </a>
+                  <div class="modal flag-modal" role="dialog" data-trigger="#flag-for-message-302231050" aria-hidden="true">
+                    <div class="modal-table">
+                      <div class="modal-cell">
+                        <div class="modal-content">
+                          <form accept-charset="UTF-8" action="/user_flags" class="new_user_flag" id="new_user_flag" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="V4$.airbnb.co.kr$DV09Llj7F8A$8m3iHvCU758CHb42mCUvPyvGKhh9t8dpseGU4OSWwB8="></div>
+                            <div class="panel-header main-header">
+                              <a href="#" class="modal-close" data-behavior="modal-close"></a>
+                              본 메세지를 익명으로 신고하시겠습니까?
+                            </div>
+                            <div class="panel-header thanks-header hide">
+                              감사합니다!
+                            </div>
+                            <div class="panel-body flag-form">
+                              그렇다면 다음 이유 중 하나를 선택하시면
+                              신뢰와 안전 전문 팀이 조사에 들어갈 것입니다.<br><br>
+                              <ul class="list-unstyled">
+                                <li class="row-space-2">
+                                  <a href="#" class="flag-reasons btn btn-large btn-block
+                                                     " data-reason-id="Attempt to pay or communicate outside Airbnb">에어비앤비 사이트 밖에서 결제 또는 의사소통 시도 <i class="icon icon-question flag-question h5" data-behavior="tooltip" data-position="right" aria-label="본 사용자는 예약이 수락되기 전에 연락 정보의 공유 또는 제공 요청을 시도하고 있습니다."></i></a>
+                                </li>
+                                <li class="row-space-2">
+                                  <a href="#" class="flag-reasons btn btn-large btn-block
+                                                     " data-reason-id="Solicitation for another website">다른 웹사이트 사용 유도 <i class="icon icon-question flag-question h5" data-behavior="tooltip" data-position="right" aria-label="본 메세지에는 에어비앤비와 관련이 없는 웹사이트 링크가 포함되어 있습니다."></i></a>
+                                </li>
+                                <li class="row-space-2">
+                                  <a href="#" class="flag-reasons btn btn-large btn-block
+                                                     " data-reason-id="Inappropriate content">부적절한 내용 <i class="icon icon-question flag-question h5" data-behavior="tooltip" data-position="right" aria-label="이 메시지는 폭력적이거나, 불쾌한 것을 생생하게 묘사하거나, 다른 불쾌한 내용이 포함되어 있습니다."></i></a>
+                                </li>
+                                <li class="row-space-2 other">
+                                  <a href="#" class="flag-reasons btn btn-large btn-block
+                                                     row-space-2" data-reason-id="Other">기타 <i class="icon icon-question flag-question h5" data-behavior="tooltip" data-position="right" aria-label="해당 이유 없음"></i></a>
+                                  <div class="other-container hide">
+                                    <textarea class="row-space-2" cols="40" id="user_flag_other_note" name="user_flag[other_note]" placeholder="이유를 설명해 주세요." required="required" rows="3"></textarea>
+                                  </div>
+                                </li>
+                              </ul>
+                              <input id="user_flag_flaggable_type" name="user_flag[flaggable_type]" type="hidden" value="message">
+                              <input id="user_flag_flaggable_id" name="user_flag[flaggable_id]" type="hidden" value="302231050">
+                              <input id="user_flag_name" name="user_flag[name]" type="hidden">
+                              <input id="user_flag_id" name="user_flag[id]" type="hidden">
+                            </div>
+                            <div class="panel-body flag-thank-you hide">
+                              <p>
+                                메시지를 신고해주셔서 감사합니다.
+                                귀하의 참여가 에어비앤비를 안전하고 믿을 수 있는 커뮤니티로 만들어주며, 
+                                귀하의 노력은 간과되지 않습니다!
+                              </p>
+                              <a href="#" class="btn btn-small btn-block">Close</a>
+                            </div>
+                            <div class="panel-footer hide">
+                              <input class="btn btn-primary btn-large" id="user_flag_submit" name="commit" type="submit" value="제출하기">
+                            </div>
+                        </form>      </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="already-flagged text-muted  hide">
+                  본 메세지를 신고했습니다.
+                  <a href="#" class="show-message hide">메시지 보여주기</a><a href="#" class="hide-message hide">메시지 숨기기</a> 또는 <a href="#" class="undo_flag">되돌릴까요?</a>
+                </div>
+
+
+                <div class="message-text">
+                  {{ tx.content }}
+                </div>
+              </div>
+
+            </div>
+
+            <div class="time-container text-muted text-right">
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-sm-2 col-md-1 col-md-push-1 text-center">
+          <a href="/users/show/6180833" class="media-photo media-middle media-round" data-behavior="tooltip" aria-label="{{ tx.sender.username }}"><img alt="{{ tx.sender.username }}" height="36" src ng-src="{{ tx.sender.profile.profile_img_url }}" title="{{ tx.sender.username }}" width="36"></a>
+        </div>
+      </div>
+
+      <!-- Second case start -->
+
+      <div ng-if="tx.message_type != 'normal'" class="row row-condensed">
+        <div class="col-md-10 col-md-offset-1">
+          <div class="panel row-space-4">
+            <div class="panel-body panel-dark">
+              <h4>
+              {{ tx.sender.username }} {{ tx.content }}
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Second case end -->
+
+      <!-- Third case start -->
+
+      <div ng-if="tx.message_type == 'normal' && tx.sender.username == currentUser.username" class="row row-condensed">
+        <div class="col-sm-2 col-md-1 text-center">
+          <a href class="media-photo media-middle media-round" data-behavior="tooltip"
+             aria-label="{{ tx.sender.username }}">
+            <img alt="{{ tx.sender.username }}" height="36" src ng-src="{{ tx.sender.profile.profile_img_url }}"
+                                                                                                                                         title="{{ tx.sender.username }}" width="36"></a>
+        </div>
+
+        <div class="col-sm-10 ">
+          <div class="row-space-4">
+            <div class="panel panel-quote panel-quote-flush ">
+              <div class="panel-body">
+
+
+                <div class="message-text">
+                  {{ tx.content }}
+                </div>
+              </div>
+
+            </div>
+
+            <div class="time-container text-muted ">
+              <small class="time" title="Tue, Dec 09 2014, 04:22PM KST">
+
+              </small>
+              <small class="exact-time hide">
+                Tue, Dec 09 2014, 04:22PM KST
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Third case end -->
+    </li>
+    <li class="thread-list-item" ng-repeat="tx in txs">
+      {{ tx }}
+    </li>
+  </ul>
+
+
+
+</div>

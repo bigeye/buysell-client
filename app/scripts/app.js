@@ -32,6 +32,10 @@ angular
         templateUrl: 'views/inbox.html',
         controller: 'InboxCtrl'
       })
+      .when('/tx/:id', {
+        templateUrl: 'views/tx.html',
+        controller: 'TxCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

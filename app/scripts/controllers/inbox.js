@@ -3,6 +3,7 @@ angular.module('buysellApp')
         $scope.inboxes = [];
         $http.get(API_URL + '/api/account/transaction/')
             .success(function(res) {
+                console.log(res.results);
                 $scope.inboxes = res.results;
             })
             .error(function(res) {

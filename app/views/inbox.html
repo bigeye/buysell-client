@@ -1,59 +1,61 @@
-<div id="inbox" class="threads col-sm-12">
-  <div class="panel">
-    <div class="panel-header">
-      <div class="row">
-        <div class="header">
-          <div class="select select-large select-block">
-            <form role="form">
-              <div class="form-group">
-                <select id="filter" name="filter" class="form-control">
-                  <option value="all" selected="selected">모든 메세지 </option>
-                  <option value="starred">별표 (0)</option>
-                  <option value="unread">읽지 않음 (0)</option>
-                  <option value="reservations">예약관리 (3)</option>
-                  <option value="late_or_no_response">늦은 답변 혹은 답변 없음 (0)</option>
-                  <option value="pending_requests">대기 중인 요청 (0)</option>
-                  <option value="hidden">보관처리됨 (0)</option>
-                </select>
-              </div>
-            </form>
-          </div>
-          <div class="hide-sm col-md-9">
-            <div class="pull-right">
+<div class="tx-container">
+  <div id="inbox" class="threads col-sm-12">
+    <div class="panel">
+      <div class="panel-header">
+        <div class="row">
+          <div class="header">
+            <div class="select select-large select-block">
+              <form role="form">
+                <div class="form-group">
+                  <select id="filter" name="filter" class="form-control">
+                    <option value="all" selected="selected">모든 메세지 </option>
+                    <option value="starred">별표 (0)</option>
+                    <option value="unread">읽지 않음 (0)</option>
+                    <option value="reservations">예약관리 (3)</option>
+                    <option value="late_or_no_response">늦은 답변 혹은 답변 없음 (0)</option>
+                    <option value="pending_requests">대기 중인 요청 (0)</option>
+                    <option value="hidden">보관처리됨 (0)</option>
+                  </select>
+                </div>
+              </form>
             </div>
-          </div> <!-- hide-sm col-md-9 -->
-        </div>
-      </div> <!-- .row -->
-    </div>
-    <ul class="list-layout panel-body" id="threads">
-      <a href>
+            <div class="hide-sm col-md-9">
+              <div class="pull-right">
+              </div>
+            </div> <!-- hide-sm col-md-9 -->
+          </div>
+        </div> <!-- .row -->
+      </div>
+      <ul class="list-layout panel-body" id="threads">
         <li ng-repeat="inbox in inboxes"
             class="panel-body thread js-thread
                    thread--read" id="thread_70918434">
-          <div class="row">
-            <div class="col-sm-9 col-md-3 thread-author">
-              <div class="row row-table">
-                <div class="thread-avatar col-md-5">
-                  <img alt="Young Ah" class="media-round media-photo" height="50" src="https://randomuser.me/api/portraits/med/men/52.jpg" title="Young Ah" width="50" />
+          <a href ng-href="#/tx/{{ inbox.transaction.id }}">
+            <div class="row">
+              <div class="col-sm-9 col-md-3 thread-author">
+                <div class="row row-table">
+                  <div class="thread-avatar col-md-5">
+                    <img alt="{{ inbox.sender.username }}" class="media-round media-large media-photo" height="50" ng-src="{{ inbox.sender.profile.profile_img_url }}" title="{{ inbox.sender.username }}" width="50" />
+                  </div>
+                  <div class="col-sm-7 thread-name">
+                    {{ inbox.sender.username }}
+                    <br />
+                    <span class="thread-date">{{ inbox.receive_date | limitTo:10 }}</span>
+                  </div>
                 </div>
-                <div class="col-sm-7 thread-name">
-                  {{ inbox.sender.username }}
-                  <br />
-                  <span class="thread-date">{{ inbox.receive_date | limitTo:10 }}</span>
+              </div>
+              <div class="col-sm-9 thread-body">
+                <span class="thread-subject">
+                  {{ inbox.post.title }}
+                </span>
+                <div class="text-muted show-lg">
+                  {{ inbox.content }}
                 </div>
               </div>
             </div>
-            <div class="col-sm-9 thread-body">
-              <span class="thread-subject">
-                {{ inbox.post.title }}
-              </span>
-              <div class="text-muted show-lg">
-                {{ inbox.content }}
-              </div>
-            </div>
-          </div>
+          </a>
         </li>
-      </a>
-    </ul>
+      </ul>
+    </div>
   </div>
 </div>

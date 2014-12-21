@@ -15,21 +15,22 @@ angular.module('buysellApp')
             $scope.txstatus = 'ask';
 
             if (!!AuthService.isAuthenticated()) {
-                $http.get(API_URL + '/api/post/' + $photo.id + '/transactions/')
+                $http.get(API_URL + '/api/post/' + $photo.id + '/transaction/')
                     .success(function(data, status, headers, config) {
                         console.log('success');
                         console.log(data);
-                        if (data.results.length > 0) {
-                            $scope.txid = data.results[0].id;
-                            $scope.txstatus = data.results[0].status;
-                        } else {
-                            $http.post(API_URL + '/api/post/' + $photo.id + '/transaction/')
-                                .success(function(res) {
-                                    console.log(res);
-                                    $scope.txid = res.id;
-                                    $scope.txstatus = res.status;
-                                });
+                        if (Object.keys(data).length > 0) {
+                            $scope.txid = data.id;
+                            $scope.txstatus = data.status;
                         }
+                        // else {
+                        //     $http.post(API_URL + '/api/post/' + $photo.id + '/transaction/')
+                        //         .success(function(res) {
+                        //             console.log(res);
+                        //             $scope.txid = res.id;
+                        //             $scope.txstatus = res.status;
+                        //         });
+                        // }
                     })
                     .error(function(data, status, headers, config) {
                         console.log('fail');
@@ -42,7 +43,7 @@ angular.module('buysellApp')
 
         $scope.sendTx = function(newStatus) {
             if (confirm('Are you sure you want to ' + newStatus + '?')) {
-                $http.put(API_URL + '/api/transaction/' + $scope.txid + '/', {'status': newStatus})
+                $http.put(API_URL + '/api/post/' + $scope.selectedCard.id + '/transaction/', {'status': newStatus})
                     .success(function(res) {
                         $scope.txstatus = res.status;
                     });
