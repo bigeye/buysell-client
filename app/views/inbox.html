@@ -44,13 +44,21 @@
                   </div>
                 </div>
               </div>
-              <div class="col-sm-9 thread-body">
+              <div class="col-sm-7 thread-body">
                 <span class="thread-subject">
                   {{ inbox.post.title }}
                 </span>
                 <div class="text-muted show-lg">
                   {{ inbox.content }}
                 </div>
+              </div>
+              <div class="col-sm-2 thread-body">
+                <center>
+                  <h4><span ng-if="inbox.transaction.status == 'request'" class="label label-success">Requesting</span></h4>
+                  <h4><span ng-if="inbox.transaction.status == 'cancel'" class="label label-danger">Canceled</span></h4>
+                  <h4><span ng-if="inbox.transaction.status == 'ask'" class="label label-success">Requesting</span></h4>
+                  <h4><span ng-if="inbox.transaction.status == 'accept'" class="label label-primary">Accepted</span></h4>
+                </center>
               </div>
             </div>
           </a>

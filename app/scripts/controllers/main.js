@@ -8,7 +8,8 @@
  * Controller of the buysellApp
  */
 angular.module('buysellApp')
-    .controller('MainCtrl', function ($scope, ngDialog, myService, $http, API_URL, $rootScope, AuthService) {
+    .controller('MainCtrl', function ($scope, ngDialog, myService, $http, API_URL,
+                                      $rootScope, AuthService, $location) {
         $scope.cardSelected = function($photo) {
             $scope.selectedCard = $photo;
             $scope.txid = 0;
@@ -46,6 +47,8 @@ angular.module('buysellApp')
                 $http.put(API_URL + '/api/post/' + $scope.selectedCard.id + '/transaction/', {'status': newStatus})
                     .success(function(res) {
                         $scope.txstatus = res.status;
+                        ngDialog.closeAll();
+                        $location.path("/tx/" + res.id);
                     });
             }
         };

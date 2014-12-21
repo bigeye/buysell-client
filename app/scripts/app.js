@@ -63,8 +63,8 @@ angular
                                      Session) {
         $scope.currentUser = $cookieStore.get("currentUser");
         $scope.userRoles = USER_ROLES;
+        $scope.authToken = $cookieStore.get('authToken');
         $scope.isAuthorized = AuthService.isAuthorized;
-        $scope.authToken = $cookieStore.get("authToken");
         if (!!$scope.authToken) {
             Session.create($scope.currentUser.id,
                            $scope.currentUser.id);

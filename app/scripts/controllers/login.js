@@ -30,11 +30,15 @@ angular.module('buysellApp')
                 });
         };
 
-        authService.signup = function (credentials) {
+        authService.signup = function (credentials, $scope) {
             return $http
                 .post(API_URL + '/api/account/user/', credentials)
                 .then(function (res) {
                     Session.create(res.data.id, res.data.id);
+                    $http.post(API_URL + '/api/account/auth_token/', credentials)
+                        .then(function (res) {
+                            $scope.setAuthToken(res.data.token);
+                        });
                     return res.data;
                 });
         };
@@ -97,7 +101,7 @@ angular.module('buysellApp')
                 myService.alertResponse({'password': ['It doesn\'t match with password confirm.']});
                 return;
             }
-            AuthService.signup(credentials).then(function (user) {
+            AuthService.signup(credentials, $scope).then(function (user) {
                 $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
                 $scope.setCurrentUser(user);
                 $scope.closeThisDialog();
