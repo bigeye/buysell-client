@@ -31,7 +31,8 @@ angular
       .when('/inbox', {
         templateUrl: 'views/inbox.html',
         controller: 'InboxCtrl'
-      })      .otherwise({
+      })
+      .otherwise({
         redirectTo: '/'
       });
   })
