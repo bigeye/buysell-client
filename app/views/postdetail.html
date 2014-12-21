@@ -1,4 +1,10 @@
 <div class="post-detail-container">
+  <button type="button" class="btn btn-primary btn-lg txbtn tx-request"
+          ng-show="txstatus == 'ask' || txstatus == 'cancel'"
+          ng-click="sendTx('request')">Request</button>
+  <button type="button" class="btn btn-danger btn-lg txbtn tx-cancel"
+          ng-show="txstatus == 'request'"
+          ng-click="sendTx('cancel')">Cancel</button>
   <img class="post-detail-img" ng-src="{{ selectedCard.images[0] }}" />
   <div class="post-detail-desc">
     <div class="row">

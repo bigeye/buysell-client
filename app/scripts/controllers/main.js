@@ -8,23 +8,47 @@
  * Controller of the buysellApp
  */
 angular.module('buysellApp')
-    .controller('MainCtrl', function ($scope, ngDialog, myService, $http, API_URL, $rootScope) {
+    .controller('MainCtrl', function ($scope, ngDialog, myService, $http, API_URL, $rootScope, AuthService) {
         $scope.cardSelected = function($photo) {
             $scope.selectedCard = $photo;
-            $http.get(API_URL + '/api/post/' + $photo.id + '/transactions/')
-                .success(function(data, status, headers, config) {
-                    console.log('success');
-                    console.log(data);
-                })
-                .error(function(data, status, headers, config) {
-                    console.log('fail');
-                    console.log(data);
-                    myService.alertResponse(data);
-                });
-            
+            $scope.txid = 0;
+            $scope.txstatus = 'ask';
+
+            if (!!AuthService.isAuthenticated()) {
+                $http.get(API_URL + '/api/post/' + $photo.id + '/transactions/')
+                    .success(function(data, status, headers, config) {
+                        console.log('success');
+                        console.log(data);
+                        if (data.results.length > 0) {
+                            $scope.txid = data.results[0].id;
+                            $scope.txstatus = data.results[0].status;
+                        } else {
+                            $http.post(API_URL + '/api/post/' + $photo.id + '/transaction/')
+                                .success(function(res) {
+                                    console.log(res);
+                                    $scope.txid = res.id;
+                                    $scope.txstatus = res.status;
+                                });
+                        }
+                    })
+                    .error(function(data, status, headers, config) {
+                        console.log('fail');
+                        console.log(data);
+                        myService.alertResponse(data);
+                    });
+            }            
             myService.clickToOpen('views/postdetail.html', $scope, 'postdetail');
         };
 
+        $scope.sendTx = function(newStatus) {
+            if (confirm('Are you sure you want to ' + newStatus + '?')) {
+                $http.put(API_URL + '/api/transaction/' + $scope.txid + '/', {'status': newStatus})
+                    .success(function(res) {
+                        $scope.txstatus = res.status;
+                    });
+            }
+        };
+            
         $scope.posts = [
             {id: 1, title: 'Awesome photo', content: 'Hello', writer: {name:'Samantha', profile: 'http://api.randomuser.me/portraits/med/women/60.jpg'}, images: [// 'http://lorempixel.com/400/300/sports'
                 ], price: 1000},

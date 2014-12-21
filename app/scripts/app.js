@@ -55,15 +55,20 @@ angular
                                      USER_ROLES,
                                      AuthService,
                                      $http,
-                                     $cookieStore) {
+                                     $cookieStore,
+                                     Session) {
         $scope.currentUser = $cookieStore.get("currentUser");
         $scope.userRoles = USER_ROLES;
         $scope.isAuthorized = AuthService.isAuthorized;
         $scope.authToken = $cookieStore.get("authToken");
-        if (!!$scope.authToken)
+        if (!!$scope.authToken) {
+            Session.create($scope.currentUser.id,
+                           $scope.currentUser.id);
             $http.defaults.headers.common['Authorization'] = 'JWT ' + $scope.authToken;
-        else
+        } else {
             delete $http.defaults.headers.common['Authorization'];
+            Session.destroy();
+        }
         
         $scope.setCurrentUser = function (user) {
             $scope.currentUser = user;
