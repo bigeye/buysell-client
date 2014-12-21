@@ -1,7 +1,15 @@
 <div class="tx-container">
+  <div><h1 class="col-sm-12 col-md-10 col-md-push-1"> <b>Messages for {{ tx.post.title }} <br></b></h1>
+  <br>
+                  <h4><span ng-if="tx.status == 'request'" class="label label-success">Requesting</span></h4>
+                  <h4><span ng-if="tx.status == 'cancel'" class="label label-danger">Canceled</span></h4>
+                  <h4><span ng-if="tx.status == 'ask'" class="label label-success">Requesting</span></h4>
+                  <h4><span ng-if="tx.status == 'accept'" class="label label-primary">Accepted</span></h4>
+  <br>
+  <br><br>
+  </div>
+  <br>
   <ul id="thread-list" class="list-unstyled">
-    <li class="thread-list-item" >
-    </li>
     <li class="thread-list-item" >
       <div class="row row-condensed row-space-4">
         <div class="col-sm-12 col-md-10 col-md-push-1">
@@ -17,9 +25,19 @@
                           ng-model="message"/>
 
 
+                <div class="pull-left">
+                  <button ng-show="tx.status == 'request' && tx.post.writer.username == currentUser.username"
+                          type="button" class="btn btn-primary" ng-click="txaccept()">
+                    ACCEPT
+                  </button>
+                  <button ng-show="tx.status == 'request' && tx.post.writer.username == currentUser.username"
+                          type="button" class="btn btn-danger" ng-click="txcancel()">
+                    CANCEL
+                  </button>
+                  </div >
                 <div class="pull-right">
 
-                  <button type="button" class="btn btn-primary" ng-click="sendMessage()">
+                  <button type="button" class="btn btn-info" ng-click="sendMessage()">
                     Send
                   </button>
                 </div>

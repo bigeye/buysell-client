@@ -10,6 +10,8 @@ angular.module('buysellApp')
             .success(function(res) {
                 console.log(res.results);
                 $scope.txs = res.results;
+                if ($scope.txs.length > 0)
+                    $scope.tx = $scope.txs[0].transaction;
             })
             .error(function(res) {
                 console.log(res);
@@ -26,6 +28,22 @@ angular.module('buysellApp')
                 .error(function(res) {
                     console.log(res);
                 });
+        };
+
+        $scope.txaccept = function() {
+            $scope.sendTx("Are you sure to ACCEPT this request?\nThis action CANNOT be undone!", "accept");
+            };
+        $scope.txcancel = function() {
+            $scope.sendTx("Are you sure to DENY this request?\nThis action CANNOT be undone!", "deny");
+            };
+        $scope.sendTx = function(message, newStatus) {
+            if (confirm(message)) {
+                $http.put(API_URL + '/api/post/' + $scope.tx.post.id + '/transaction/', {'status': newStatus})
+                    .success(function(res) {
+                        $scope.tx = res;
+                        $location.reload();
+                    });
+            }
         };
             
     });
