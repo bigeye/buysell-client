@@ -1,31 +1,31 @@
 <div class="tx-container">
   <ul id="thread-list" class="list-unstyled">
     <li class="thread-list-item" >
-
+    </li>
+    <li class="thread-list-item" >
       <div class="row row-condensed row-space-4">
         <div class="col-sm-12 col-md-10 col-md-push-1">
           <div class="panel-quote-flush panel">
             <div class="panel-body normal-form-fields">
-              <form accept-charset="UTF-8" action="/messaging/qt_reply_v2/70918434" class="message_form clearfix" id="non_special_offer_form" method="post">
+              <form accept-charset="UTF-8" action class="message_form clearfix" id="non_special_offer_form" method="post">
                 <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓">
 
                 <input type="hidden" name="inquiry_post_id" value="302230018">
 
                 <input type="hidden" name="template" value="">
-                <textarea class="row-space-2 input-resize-vert" id="message_inquiry" name="message" placeholder="Write a message here." style="overflow: hidden; word-wrap: break-word; width: 100%; resize: none; height: 62px;padding: 10px;"></textarea>
+                <textarea class="row-space-2 input-resize-vert" id="message_inquiry" name="message" placeholder="Write a message here." style="overflow: hidden; word-wrap: break-word; width: 100%; resize: none; height: 80px;padding: 10px;"
+                          ng-model="message"/>
 
 
                 <div class="pull-right">
 
-                  <input type="submit" class="btn btn-primary" value="전송하기">
+                  <button type="button" class="btn btn-primary" ng-click="sendMessage()">
+                    Send
+                  </button>
                 </div>
 
               </form>
             </div>
-
-
-
-
           </div>
         </div>
       </div>
@@ -177,9 +177,6 @@
         </div>
       </div>
       <!-- Third case end -->
-    </li>
-    <li class="thread-list-item" ng-repeat="tx in txs">
-      {{ tx }}
     </li>
   </ul>
 
