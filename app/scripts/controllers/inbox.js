@@ -1,10 +1,11 @@
 angular.module('buysellApp')
     .controller('InboxCtrl', function($scope, $http, myService, API_URL) {
-        $http.get(API_URL + '/api/account/transaction')
+        $scope.inboxes = [];
+        $http.get(API_URL + '/api/account/transaction/')
             .success(function(res) {
-                console.log(res.data);
+                $scope.inboxes = res.results;
             })
             .error(function(res) {
-                console.log(res.data);
+                console.log(res);
             });
     });

@@ -18,12 +18,12 @@ angular.module('buysellApp')
         
         authService.login = function (credentials, $scope) {
             $http
-                .post(API_URL + '/api/account/auth_token', credentials)
+                .post(API_URL + '/api/account/auth_token/', credentials)
                 .then(function (res) {
                     $scope.setAuthToken(res.data.token);
                 });
             return $http
-                .post(API_URL + '/api/account/login', credentials)
+                .post(API_URL + '/api/account/login/', credentials)
                 .then(function (res) {
                     Session.create(res.data.id, res.data.id);
                     return res.data;
@@ -32,7 +32,7 @@ angular.module('buysellApp')
 
         authService.signup = function (credentials) {
             return $http
-                .post(API_URL + '/api/account/user', credentials)
+                .post(API_URL + '/api/account/user/', credentials)
                 .then(function (res) {
                     Session.create(res.data.id, res.data.id);
                     return res.data;
