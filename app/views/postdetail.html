@@ -5,6 +5,10 @@
   <button type="button" class="btn btn-danger btn-lg txbtn tx-cancel"
           ng-show="selectedCard.writer.username != currentUser.username && txstatus == 'request'"
           ng-click="sendTx('cancel')">Cancel</button>
+  <button type="button" class="btn btn-danger btn-lg txbtn tx-cancel"
+          ng-show="txrequester == currentUser.username && txstatus == 'deny'">Denied</button>
+  <button type="button" class="btn btn-primary btn-lg txbtn tx-cancel"
+          ng-show="txrequester == currentUser.username && txstatus == 'accept'">Accepted</button>
   <img class="post-detail-img" ng-src="{{ selectedCard.images[0] }}" />
   <div class="post-detail-desc">
     <div class="row">

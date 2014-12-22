@@ -12,6 +12,7 @@ angular.module('buysellApp')
                                       $rootScope, AuthService, $location) {
         $scope.cardSelected = function($photo) {
             $scope.selectedCard = $photo;
+            $scope.txrequester = undefined;
             $scope.txid = 0;
             $scope.txstatus = 'ask';
 
@@ -21,6 +22,7 @@ angular.module('buysellApp')
                         console.log('success');
                         console.log(data);
                         if (Object.keys(data).length > 0) {
+                            $scope.txrequester = data;
                             $scope.txid = data.id;
                             $scope.txstatus = data.status;
                         }

@@ -56,6 +56,7 @@
                 <center>
                   <h4><span ng-if="inbox.transaction.status == 'request'" class="label label-success">Requesting</span></h4>
                   <h4><span ng-if="inbox.transaction.status == 'cancel'" class="label label-danger">Canceled</span></h4>
+                  <h4><span ng-if="inbox.transaction.status == 'deny'" class="label label-danger">Denied</span></h4>
                   <h4><span ng-if="inbox.transaction.status == 'ask'" class="label label-success">Requesting</span></h4>
                   <h4><span ng-if="inbox.transaction.status == 'accept'" class="label label-primary">Accepted</span></h4>
                 </center>

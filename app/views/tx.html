@@ -3,6 +3,7 @@
   <br>
                   <h4><span ng-if="tx.status == 'request'" class="label label-success">Requesting</span></h4>
                   <h4><span ng-if="tx.status == 'cancel'" class="label label-danger">Canceled</span></h4>
+                  <h4><span ng-if="tx.status == 'deny'" class="label label-danger">Denied</span></h4>
                   <h4><span ng-if="tx.status == 'ask'" class="label label-success">Requesting</span></h4>
                   <h4><span ng-if="tx.status == 'accept'" class="label label-primary">Accepted</span></h4>
   <br>
@@ -32,7 +33,7 @@
                   </button>
                   <button ng-show="tx.status == 'request' && tx.post.writer.username == currentUser.username"
                           type="button" class="btn btn-danger" ng-click="txcancel()">
-                    CANCEL
+                    DENY
                   </button>
                   </div >
                 <div class="pull-right">
@@ -152,7 +153,7 @@
           <div class="panel row-space-4">
             <div class="panel-body panel-dark">
               <h4>
-              {{ tx.sender.username }} {{ tx.content }}
+                <b>{{ tx.content }}</b>
               </h4>
             </div>
           </div>
