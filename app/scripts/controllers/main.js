@@ -22,7 +22,8 @@ angular.module('buysellApp')
                         console.log('success');
                         console.log(data);
                         if (Object.keys(data).length > 0) {
-                            $scope.txrequester = data;
+                            $scope.txrequester = data.requester.username;
+                            console.log($scope.txrequester);
                             $scope.txid = data.id;
                             $scope.txstatus = data.status;
                         }
