@@ -38,10 +38,10 @@ angular.module('buysellApp')
             };
         $scope.sendTx = function(message, newStatus) {
             if (confirm(message)) {
-                $http.put(API_URL + '/api/post/' + $scope.tx.post.id + '/transaction/', {'status': newStatus})
+                $http.put(API_URL + '/api/transaction/' + $scope.tx.id + '/', {'status': newStatus})
                     .success(function(res) {
                         $scope.tx = res;
-                        $location.reload();
+                        $route.reload();
                     });
             }
         };
